@@ -331,6 +331,7 @@ function initDescriptions() {
   switch (nm) {
     case "lobby":
       $("#names").remove();
+      $("#name-close").remove();
       break;
     case "daniel":
       $("#names").html("DANIEL ITURRIZAGA");
