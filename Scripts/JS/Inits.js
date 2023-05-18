@@ -294,6 +294,8 @@ $(document).ready(function () {
   $("#instructions-close").click(function () {
     $("#instructions").hide();
     $("#instructions-close").hide();
+    $("#names").css("top", "20px");
+    $("#name-close").css("top", "30px");
   });
 
   $("#name-close").click(function () {
