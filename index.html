@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>W R O N G</title>
+    <link rel="stylesheet" href="./Scripts/CSS/Styles.css" />
+  </head>
+  <body>
+    <div id="gifHolder" style="display: none"></div>
+    <div id="holder">
+      <div id="blackBG"></div>
+      <div id="progress">LOADING</div>
+    </div>
+    <div id="finished"></div>
+    <div class="arrows" id="arrowL" onclick="arrowClick('left');">
+      <img src="./Assets/Images/arrowL.png" alt="left arrow" />
+    </div>
+    <div class="arrows" id="arrowR" onclick="arrowClick('right');">
+      <img src="./Assets/Images/arrowR.png" alt="right arrow" />
+    </div>
+    <div id="bottomRO"></div>
+    <div id="bottomHolder">
+      <div id="instructions">
+        -POINT CURSOR TO NAVIGATE<br />
+        -SCROLL TO ZOOM, UP/DOWN ARROW KEYS TO ZOOM<br />
+        -CLICK TO LOCK, CLICK TO UNLOCK
+        <div class="close" id="instructions-close">x</div>
+      </div>
+      <div id="names"><div class="close" id="name-close">x</div></div>
+    </div>
+
+    <div id="videoContainer"></div>
+
+    <script>
+      var params = new URLSearchParams(window.location.search);
+      var nm = params.get("name") ? params.get("name") : "lobby";
+      var NM = nm;
+
+      var videoContainer = document.getElementById("videoContainer");
+
+      if (nm == "seyhan") {
+        videoContainer.innerHTML = `
+                <video autoplay id="devotion1" loop muted style="display:none">
+                    <source src="Assets/Videos/seyhan.mp4" type="video/mp4">
+                    <source src="Assets/Videos/seyhan.ogv" type="video/ogg">
+                </video>`;
+      }
+
+      if (nm == "ferran") {
+        videoContainer.innerHTML = `
+                <video autoplay id="devotion1" loop muted style="display:none">
+                    <source src="Assets/Videos/devotion1.mp4" type="video/mp4">
+                    <source src="Assets/Videos/devotion1.ogv" type="video/ogg">
+                </video>
+                <video autoplay id="devotion2" loop muted style="display:none">
+                    <source src="Assets/Videos/devotion2.mp4" type="video/mp4">
+                    <source src="Assets/Videos/devotion2.ogv" type="video/ogg">
+                </video>`;
+      }
+
+      if (nm == "angelo") {
+        videoContainer.innerHTML = `
+                <video autoplay id="devotion1" loop muted style="display:none">
+                    <source src="Assets/Videos/angelo.mp4" type="video/mp4">
+                    <source src="Assets/Videos/angelo.ogv" type="video/ogg">
+                </video>`;
+      }
+    </script>
+    <script src="Scripts/JS/jquery.js"></script>
+    <script>
+      $.getScript(`Scripts/JS/SpecificInits/${NM}.js`)
+        .done(function (script, textStatus) {
+          console.log(textStatus);
+          init(NM);
+          animate();
+        })
+        .fail(function (jqxhr, settings, exception) {
+          console.log(`Loading of script failed: ${exception}`);
+        });
+    </script>
+    <script src="Scripts/JS/libgifMod.js"></script>
+    <script src="Scripts/JS/three.min.js"></script>
+    <script src="Scripts/JS/Detector.js"></script>
+    <script src="Scripts/JS/Inits.js"></script>
+    <script src="Scripts/JS/Pages.js"></script>
+    <script src="Scripts/JS/Updates.js"></script>
+  </body>
+</html>
