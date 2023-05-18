@@ -290,6 +290,18 @@ function initLoadedScene(result) {
   }, 5000);
 }
 
+$(document).ready(function () {
+  $("#instructions-close").click(function () {
+    $("#instructions").hide();
+    $("#instructions-close").hide();
+  });
+
+  $("#name-close").click(function () {
+    $("#names").hide();
+    $("#name-close").hide();
+  });
+});
+
 function createLoadScene() {
   var result = {
     scene: new THREE.Scene(),
@@ -327,17 +339,23 @@ function initDescriptions() {
       $("#names").html("RACHAEL ARCHIBALD");
       break;
     case "katja":
+      $("#instructions").hide();
+      $("#instructions-close").hide();
       $("#directions").html(
         "  -CLICK AND DRAG TO MOVE<br /> -SCROLL TO ZOOM, UP/DOWN ARROW KEYS TO ZOOM"
       );
-      $("#names").html("KATJA NOVITSKOVA");
+      $("#names").html(
+        "KATJA NOVITSKOVA<br/><span style='width=200px; overflow:auto; margin-top: 20px; font-size: 11px'>-CLICK AND DRAG TO MOVE<br /> -SCROLL TO ZOOM, UP/DOWN ARROW KEYS TO ZOOM</span>"
+      );
+      $("#names").css("top", "20px");
+      $("#name-close").css("top", "30px");
       break;
     case "ferran":
       $("#names").html("FERÉSTEC <br/> Devotion");
       break;
     case "maiko":
       $("#names").html(
-        "MAIKO GUBLER<br/>Cuddle Party<br/><span style='width=200px; overflow:auto;'>The underlying mesh is<br/> made available for any<br/> modification through <br/>an open online 3D file <br/>sharing repository<br/> (http://casual3dpotluck.tumblr.com/)</span>"
+        "MAIKO GUBLER<br/>Cuddle Party<br/><span style='width=200px; overflow:auto; margin-top: 20px; font-size: 11px'>The underlying mesh is<br/> made available for any<br/> modification through <br/>an open online 3D file <br/>sharing repository<br/> (http://casual3dpotluck.tumblr.com/)</span>"
       );
       break;
     case "seyhan":
