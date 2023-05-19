@@ -1,4 +1,5 @@
 function arrowClick(d) {
+  $("#bottomHolder").hide();
   if (!didArrowClick) {
     if (d == "left") {
       moveLeft = true;

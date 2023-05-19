@@ -68,38 +68,52 @@ function init(name) {
     Detector.addGetWebGLMessage();
   }
 
-  $("#bottomRO")
-    .mouseenter(function () {
-      clearTimeout(bottomRollOverTimeout);
-      $("#bottomHolder").fadeIn("slow");
-    })
-    .mouseleave(function () {
-      if (nm != "lobby") {
-        $("#bottomHolder").fadeOut("slow");
-      }
-    });
+  $("#bottomRO").mouseenter(function () {
+    clearTimeout(bottomRollOverTimeout);
+    $("#bottomHolder").fadeIn("slow");
+  });
 
+  if (nm == "lobby") {
+    $("#name-dialog").hide();
+  }
+
+  $("#instructions-close").click(function (event) {
+    event.stopPropagation();
+    $("#instructions").hide();
+    $("#instructions-close").hide();
+  });
+
+  $("#name-close").click(function (event) {
+    event.stopPropagation();
+    $("#name-dialog").hide();
+  });
+
+  var isPlaying = false;
   if (nm != "seyhan" && nm != "ferran") {
-    $("body").append(
-      "<audio loop id='themeSong'><source src='Assets/Audio/theme.ogg' type='audio/ogg'><source src='Assets/Audio/theme.mp3' type='audio/mpeg'></audio>"
-    );
+    var audioElement = document.getElementById("themeSong");
 
-    var playSong = function () {
-      if (nm == "lobby") {
-        $("#themeSong").get(0).play();
+    $("#soundIcon").click(function () {
+      if (isPlaying) {
+        $(this).attr("src", "./Assets/Images/nosound.png");
+        audioElement.pause();
       } else {
-        $("#themeSong").bind("canplay", function () {
-          this.currentTime = Math.floor(Math.random() * 210);
-          this.play();
-        });
+        $(this).attr("src", "./Assets/Images/soundon.png");
+        audioElement.play();
       }
-
-      // Remove the event listener after the first mouse move
-      document.removeEventListener("mousemove", playSong);
-    };
-
-    // Add the event listener to start the song on first mouse move
-    document.addEventListener("mousemove", playSong);
+      isPlaying = !isPlaying;
+    });
+  } else if (nm == "seyhan") {
+    var audioElement = document.getElementById("seyhanAudio");
+    $("#soundIcon").click(function () {
+      if (isPlaying) {
+        $(this).attr("src", "./Assets/Images/nosound.png");
+        audioElement.pause();
+      } else {
+        $(this).attr("src", "./Assets/Images/soundon.png");
+        audioElement.play();
+      }
+      isPlaying = !isPlaying;
+    });
   }
 
   //add renderer containers
@@ -267,7 +281,6 @@ function initLoadedScene(result) {
         bottomMat;
     }
   }
-  //console.log(nm);
   if (nm != "vince") {
     $("#holder").fadeOut("slow");
 
@@ -290,19 +303,19 @@ function initLoadedScene(result) {
   }, 5000);
 }
 
-$(document).ready(function () {
-  $("#instructions-close").click(function () {
-    $("#instructions").hide();
-    $("#instructions-close").hide();
-    $("#names").css("top", "20px");
-    $("#name-close").css("top", "30px");
-  });
+// $(document).ready(function () {
+//   $("#instructions-close").click(function (event) {
+//     event.stopPropagation();
+//     $("#instructions").hide();
+//     $("#instructions-close").hide();
+//   });
 
-  $("#name-close").click(function () {
-    $("#names").hide();
-    $("#name-close").hide();
-  });
-});
+//   $("#name-close").click(function (event) {
+//     event.stopPropagation();
+//     $("#names").hide();
+//     $("#name-close").hide();
+//   });
+// });
 
 function createLoadScene() {
   var result = {
@@ -332,8 +345,7 @@ function fadeInArrows() {
 function initDescriptions() {
   switch (nm) {
     case "lobby":
-      $("#names").remove();
-      $("#name-close").remove();
+      $("#name-dialog").remove();
       break;
     case "daniel":
       $("#names").html("DANIEL ITURRIZAGA");
@@ -343,15 +355,12 @@ function initDescriptions() {
       break;
     case "katja":
       $("#instructions").hide();
-      $("#instructions-close").hide();
       $("#directions").html(
         "  -CLICK AND DRAG TO MOVE<br /> -SCROLL TO ZOOM, UP/DOWN ARROW KEYS TO ZOOM"
       );
       $("#names").html(
         "KATJA NOVITSKOVA<br/><span style='width=200px; overflow:auto; margin-top: 20px; font-size: 11px'>-CLICK AND DRAG TO MOVE<br /> -SCROLL TO ZOOM, UP/DOWN ARROW KEYS TO ZOOM</span>"
       );
-      $("#names").css("top", "20px");
-      $("#name-close").css("top", "30px");
       break;
     case "ferran":
       $("#names").html("FERÉSTEC <br/> Devotion");
@@ -362,7 +371,9 @@ function initDescriptions() {
       );
       break;
     case "seyhan":
-      $("#names").html("SEYHAN MUSAOGLU");
+      $("#names").html(
+        "SEYHAN MUSAOGLU<br/><span style='width=200px; overflow:auto; margin-top: 20px; font-size: 11px'>Click sound icon ON for the full experience</span>"
+      );
       break;
     case "anthi":
       $("#names").html("ANTHI TZAKOU");

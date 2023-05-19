@@ -3,8 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>W R O N G</title>
     <link rel="stylesheet" href="./Scripts/CSS/Styles.css" />
+    <!-- Primary Meta Tags -->
+    <title>Conductivity Resistivity 3D Museum</title>
+    <meta name="title" content="Conductivity Resistivity 3D Museum" />
+    <meta
+      name="description"
+      content="Visit the first 3D Art museum ever created featuring 3D art and curated by Giselle Zatonyl for the Wrong Biennale, 2013.
+Features work by Angelo Pleassas, Anthi Tzakou, Ariana Van Gelder, Daniel Iturrizaga, Ferestec, Katia Novitskova, Maiko Gubler, Rachel Archibald, Seyhan Musaoglu, and Vince McKelvie. "
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://conductivityresistivity.com/" />
+    <meta property="og:title" content="Conductivity Resistivity 3D Museum" />
+    <meta
+      property="og:description"
+      content="Visit the first 3D Art museum ever created featuring 3D art and curated by Giselle Zatonyl for the Wrong Biennale, 2013.
+Features work by Angelo Pleassas, Anthi Tzakou, Ariana Van Gelder, Daniel Iturrizaga, Ferestec, Katia Novitskova, Maiko Gubler, Rachel Archibald, Seyhan Musaoglu, and Vince McKelvie. "
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/delu9m4xu/image/upload/v1684452591/conductivity-resistivity/ConductivityResistivity.png"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://conductivityresistivity.com/"
+    />
+    <meta
+      property="twitter:title"
+      content="Conductivity Resistivity 3D Museum"
+    />
+    <meta
+      property="twitter:description"
+      content="Visit the first 3D Art museum ever created featuring 3D art and curated by Giselle Zatonyl for the Wrong Biennale, 2013.
+Features work by Angelo Pleassas, Anthi Tzakou, Ariana Van Gelder, Daniel Iturrizaga, Ferestec, Katia Novitskova, Maiko Gubler, Rachel Archibald, Seyhan Musaoglu, and Vince McKelvie. "
+    />
+    <meta
+      property="twitter:image"
+      content="https://res.cloudinary.com/delu9m4xu/image/upload/v1684452591/conductivity-resistivity/ConductivityResistivity.png"
+    />
   </head>
   <body>
     <div id="gifHolder" style="display: none"></div>
@@ -21,14 +61,31 @@
     </div>
     <div id="bottomRO"></div>
     <div id="bottomHolder">
-      <div id="instructions">
+      <div id="sound">
+        <img
+          id="soundIcon"
+          src="./Assets/Images/nosound.png"
+          style="width: 40px; height: 40px; cursor: pointer"
+        />
+        <audio loop id="themeSong">
+          <source src="Assets/Audio/theme.ogg" type="audio/ogg" />
+          <source src="Assets/Audio/theme.mp3" type="audio/mpeg" />
+        </audio>
+        <audio loop id="seyhanAudio">
+          <source src="Assets/Audio/seyhan.ogg" type="audio/ogg" />
+          <source src="Assets/Audio/seyhan.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+      <div id="instructions" class="dialogs">
         -POINT CURSOR TO NAVIGATE<br />
         -SCROLL TO ZOOM, UP/DOWN ARROW KEYS TO ZOOM<br />
         -CLICK TO LOCK, CLICK TO UNLOCK
+        <div class="close" id="instructions-close">x</div>
       </div>
-      <div class="close" id="instructions-close">x</div>
-      <div id="names"></div>
-      <div class="close" id="name-close">x</div>
+      <div class="dialogs" id="name-dialog">
+        <div class="close" id="name-close">x</div>
+        <div id="names"></div>
+      </div>
     </div>
 
     <div id="videoContainer"></div>
