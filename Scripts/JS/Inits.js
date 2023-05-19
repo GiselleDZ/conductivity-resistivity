@@ -92,7 +92,8 @@ function init(name) {
   if (nm != "seyhan" && nm != "ferran") {
     var audioElement = document.getElementById("themeSong");
 
-    $("#soundIcon").click(function () {
+    $("#soundIcon").click(function (event) {
+      event.stopPropagation();
       if (isPlaying) {
         $(this).attr("src", "./Assets/Images/nosound.png");
         audioElement.pause();
@@ -104,7 +105,8 @@ function init(name) {
     });
   } else if (nm == "seyhan") {
     var audioElement = document.getElementById("seyhanAudio");
-    $("#soundIcon").click(function () {
+    $("#soundIcon").click(function (event) {
+      event.stopPropagation();
       if (isPlaying) {
         $(this).attr("src", "./Assets/Images/nosound.png");
         audioElement.pause();

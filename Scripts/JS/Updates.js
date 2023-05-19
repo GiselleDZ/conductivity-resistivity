@@ -16,18 +16,26 @@ function onDocumentMouseMove(event) {
 }
 
 function onDocumentMouseUp(event) {
-  mouseDown = false;
-  if (nm != "katja") {
-    if (moving) {
-      moving = false;
-    } else {
-      moving = true;
+  const target = $(event.target);
+  if (!target.hasClass("close") && !target.is("#soundIcon")) {
+    // Your Three.js click handling code here
+    mouseDown = false;
+    if (nm != "katja") {
+      if (moving) {
+        moving = false;
+      } else {
+        moving = true;
+      }
     }
   }
 }
 
 function onDocumentMouseDown(event) {
-  mouseDown = true;
+  const target = $(event.target);
+  if (!target.hasClass("close") && !target.is("#soundIcon")) {
+    // Your Three.js click handling code here
+    mouseDown = true;
+  }
 }
 
 function onDocumentMouseWheel(event) {

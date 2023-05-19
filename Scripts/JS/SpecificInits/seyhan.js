@@ -41,9 +41,9 @@ function updateArtwork() {
   }
 
   if (videoEl1) {
-    videoEl1.play();
     if (videoEl1.readyState === videoEl1.HAVE_ENOUGH_DATA) {
-      $("#devotion1").prop("muted", false);
+      videoEl1.play();
+      $("#devotion1").prop("muted", true);
       var vol = 1.0 - dist * 0.05;
       if (vol < 0) vol = 0;
       videoEl1.volume = vol;
