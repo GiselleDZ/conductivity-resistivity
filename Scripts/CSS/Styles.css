@@ -1,10 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
 body {
-  background-color: #000000;
+  background-color: #ffffff;
   margin: 0px;
   overflow: hidden;
   position: relative;
+  font-family: Helvetica, sans-serif;
 }
 
 .arrows {
@@ -14,6 +15,13 @@ body {
   width: 50px;
   height: 50px;
   opacity: 0.7;
+}
+
+#holder {
+  position: absolute;
+  top: 50vh;
+  left: calc(50vw - 170px);
+  background-color: #ffffff;
 }
 
 #bottomRO {
@@ -79,7 +87,6 @@ a:hover {
   padding: 20px;
   color: #ffffff;
   text-align: center;
-  font-family: Helvetica, sans-serif;
   text-transform: uppercase;
   line-height: 150%;
   color: #999;
@@ -109,7 +116,6 @@ a:hover {
 
 .close {
   position: absolute;
-  font-family: Helvetica, sans-serif;
   font-size: 14px;
   line-height: 150%;
   z-index: 3000;
